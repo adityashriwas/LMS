@@ -7,7 +7,6 @@
 "use": "@vercel/node"
 },
 {
-"srt": "src/**/*",
 "use": "@vercel/static"
 }
 ],
