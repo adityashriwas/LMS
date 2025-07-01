@@ -22,6 +22,7 @@ import {
   useEditCourseMutation,
   useGetCourseByIdQuery,
   usePublishCourseMutation,
+  useRemoveCourseMutation,
 } from "@/features/api/courseApi";
 import { Loader2 } from "lucide-react";
 import React, { useEffect, useState } from "react";
@@ -66,8 +67,7 @@ const CourseTab = () => {
     }
   }, [courseByIdData]);
 
-  const [editCourse, { data, isLoading, isSuccess, error }] =
-    useEditCourseMutation();
+  const [editCourse, { data, isLoading, isSuccess, error }] = useEditCourseMutation();
 
   const changeEventHandler = (e) => {
     const { name, value } = e.target;
@@ -128,6 +128,21 @@ const CourseTab = () => {
 
   if (courseByIdLoading) return <h1>Loading...</h1>;
 
+  const [removeCourse] = useRemoveCourseMutation();
+
+  const removeCourseHandler = async () => {
+    try {
+      const data = await removeCourse(courseId);
+      console.log(data);
+      
+      toast.message(data.message);
+    } catch (error) {
+      console.log(error);      
+    }
+    // navigate(`${/admin/course}`);
+    
+  }
+
   return (
     <Card>
       <CardHeader className="flex flex-row justify-between">
@@ -149,7 +164,9 @@ const CourseTab = () => {
           >
             {courseByIdData?.course.isPublished ? "Unpublished" : "Publish"}
           </Button>
-          <Button>Remove Course</Button>
+          <Button
+            onClick={ ()=> removeCourseHandler()}
+          >Remove Course</Button>
         </div>
       </CardHeader>
       <CardContent>
