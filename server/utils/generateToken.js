@@ -11,9 +11,10 @@ export const generateToken = (res, user, message) => {
       httpOnly: true,
       sameSite: "strict",
       maxAge: 24 * 60 * 60 * 1000, // 1 day
-    }).json({
-        success:true,
-        message,
-        user
+    })
+    .json({
+      success: true,
+      message,
+      user,
     });
 };
