@@ -8,6 +8,7 @@ export const purchaseApi = createApi({
     baseUrl: COURSE_PURCHASE_API,
     credentials: "include",
   }),
+
   endpoints: (builder) => ({
     createCheckoutSession: builder.mutation({
       query: (courseId) => ({
@@ -16,12 +17,14 @@ export const purchaseApi = createApi({
         body: { courseId },
       }),
     }),
+
     getCourseDetailWithStatus: builder.query({
       query: (courseId) => ({
         url: `/course/${courseId}/detail-with-status`,
         method: "GET",
       }),
     }),
+    
     getPurchasedCourses: builder.query({
       query: () => ({
         url: `/`,

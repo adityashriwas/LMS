@@ -17,8 +17,8 @@ const Sidebar = () => {
           </Link>
         </div>
       </div>
-    <div className="flex-1 p-10 ">
-        <Outlet/>
+      <div className="flex-1 p-10 ">
+        <Outlet />
       </div>
     </div>
   );

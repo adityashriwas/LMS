@@ -26,7 +26,7 @@ const CourseDetail = () => {
   if (isError) return <h>Failed to load course details</h>;
 
   const { course, purchased } = data;
-  console.log(purchased);
+  console.log(data);
 
   const handleContinueCourse = () => {
     if(purchased){
@@ -41,7 +41,7 @@ const CourseDetail = () => {
           <h1 className="font-bold text-2xl md:text-3xl">
             {course?.courseTitle}
           </h1>
-          <p className="text-base md:text-lg">Course Sub-title</p>
+          <p className="text-base md:text-lg">{course?.subTitle}</p>
           <p>
             Created By{" "}
             <span className="text-[#C0C4FC] underline italic">
@@ -52,7 +52,7 @@ const CourseDetail = () => {
             <BadgeInfo size={16} />
             <p>Last updated {course?.createdAt.split("T")[0]}</p>
           </div>
-          <p>Students enrolled: {course?.enrolledStudents.length}</p>
+          <p>Students enrolled: {course?.enrolledStudents?.length}</p>
         </div>
       </div>
       <div className="max-w-7xl mx-auto my-5 px-4 md:px-8 flex flex-col lg:flex-row justify-between gap-10">
@@ -65,7 +65,7 @@ const CourseDetail = () => {
           <Card>
             <CardHeader>
               <CardTitle>Course Content</CardTitle>
-              <CardDescription>4 lectures</CardDescription>
+              <CardDescription>{course.lectures.length} lectures</CardDescription>
             </CardHeader>
             <CardContent className="space-y-3">
               {course.lectures.map((lecture, idx) => (
@@ -86,13 +86,13 @@ const CourseDetail = () => {
                 <ReactPlayer
                   width="100%"
                   height={"100%"}
-                  url={course.lectures[0].videoUrl}
+                  url={course.lectures[0]?.videoUrl}
                   controls={true}
                 />
               </div>
-              <h1>Lecture title</h1>
+              <h1>{course.lectures[0]?.lectureTitle}</h1>
               <Separator className="my-2" />
-              <h1 className="text-lg md:text-xl font-semibold">Course Price</h1>
+              <h1 className="text-lg md:text-xl font-semibold">{course?.coursePrice}</h1>
             </CardContent>
             <CardFooter className="flex justify-center p-4">
               {purchased ? (

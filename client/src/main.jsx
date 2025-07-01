@@ -10,7 +10,7 @@ import LoadingSpinner from "./components/LoadingSpinner";
 
 const Custom = ({ children }) => {
   const { isLoading } = useLoadUserQuery();
-  return <>{isLoading ? <LoadingSpinner/> : <>{children}</>}</>;
+  return <>{isLoading ? <LoadingSpinner /> : <>{children}</>}</>;
 };
 
 createRoot(document.getElementById("root")).render(

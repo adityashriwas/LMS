@@ -19,11 +19,10 @@ import { toast } from "sonner";
 const AddCourse = () => {
   const [courseTitle, setCourseTitle] = useState("");
   const [category, setCategory] = useState("");
+  const navigate = useNavigate();
 
   const [createCourse, { data, isLoading, error, isSuccess }] =
     useCreateCourseMutation();
-
-  const navigate = useNavigate();
 
   const getSelectedCategory = (value) => {
     setCategory(value);
@@ -34,12 +33,12 @@ const AddCourse = () => {
   };
 
   // for displaying toast
-  useEffect(()=>{
-    if(isSuccess){
-        toast.success(data?.message || "Course created.");
-        navigate("/admin/course");
+  useEffect(() => {
+    if (isSuccess) {
+      toast.success(data?.message || "Course created.");
+      navigate("/admin/course");
     }
-  },[isSuccess, error])
+  }, [isSuccess, error]);
 
   return (
     <div className="flex-1 mx-10">
@@ -47,10 +46,6 @@ const AddCourse = () => {
         <h1 className="font-bold text-xl">
           Lets add course, add some basic course details for your new course
         </h1>
-        <p className="text-sm">
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Possimus,
-          laborum!
-        </p>
       </div>
       <div className="space-y-4">
         <div>
