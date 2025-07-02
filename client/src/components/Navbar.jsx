@@ -105,7 +105,14 @@ const Navbar = () => {
       </div>
       {/* Mobile device  */}
       <div className="flex md:hidden items-center justify-between px-4 h-full">
-        <h1 className="font-extrabold text-2xl">E-learning</h1>
+        <div className="flex items-center gap-2">
+          <School size={"30"} />
+          <Link to="/">
+            <h1 className="md:block font-extrabold text-2xl">
+              E-Learning
+            </h1>
+          </Link>
+        </div>
         <MobileNavbar user={user} />
       </div>
     </div>
@@ -129,19 +136,39 @@ const MobileNavbar = ({ user }) => {
         </Button>
       </SheetTrigger>
       <SheetContent className="flex flex-col">
-        <SheetHeader className="flex flex-row items-center justify-between mt-2">
+        <SheetHeader className="flex flex-row items-center justify-between mt-4">
+          <School size={"30"} />
           <SheetTitle>
             {" "}
-            <Link to="/">E-Learning</Link>
+            {/* <Link to="/">E-Learning</Link> */}
           </SheetTitle>
           <DarkMode />
         </SheetHeader>
         <Separator className="mr-2" />
         <nav className="flex flex-col space-y-4">
-          <Link to="/my-learning">My Learning</Link>
-          <Link to="/profile">Edit Profile</Link>
-          <p>Log out</p>
+          <SheetClose asChild>
+            <Link to="/profile">Edit Profile</Link>
+          </SheetClose>
+
+          <SheetClose asChild>
+            <Link to="/my-learning">My Learning</Link>
+          </SheetClose>
+
+          <SheetClose asChild>
+            <Link to="/admin/course">My Courses</Link>
+          </SheetClose>
+
+          <SheetClose asChild>
+            <p
+              onClick={() => {
+                /* your logout logic */
+              }}
+            >
+              Log out
+            </p>
+          </SheetClose>
         </nav>
+
         {user?.role === "instructor" && (
           <SheetFooter>
             <SheetClose asChild>

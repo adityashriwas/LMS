@@ -23,7 +23,9 @@ const CourseTable = () => {
 
   return (
     <div>
-      <Button onClick={() => navigate(`create`)}>Create a new course</Button>
+      <div className="mb-5">
+        <Button onClick={() => navigate(`create`)}>Create a new course</Button>
+      </div>
       <Table>
         <TableCaption>A list of your recent courses.</TableCaption>
         <TableHeader>
