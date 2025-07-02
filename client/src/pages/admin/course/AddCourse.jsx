@@ -40,6 +40,20 @@ const AddCourse = () => {
     }
   }, [isSuccess, error]);
 
+  const categories = [
+    { id: "nextjs", label: "Next JS" },
+    { id: "data science", label: "Data Science" },
+    { id: "frontend development", label: "Frontend Development" },
+    { id: "fullstack development", label: "Fullstack Development" },
+    { id: "mern stack development", label: "MERN Stack Development" },
+    { id: "backend development", label: "Backend Development" },
+    { id: "javascript", label: "Javascript" },
+    { id: "python", label: "Python" },
+    { id: "docker", label: "Docker" },
+    { id: "mongodb", label: "MongoDB" },
+    { id: "html", label: "HTML" },
+  ];
+
   return (
     <div className="flex-1 mx-10">
       <div className="mb-4">
@@ -66,22 +80,11 @@ const AddCourse = () => {
             <SelectContent>
               <SelectGroup>
                 <SelectLabel>Category</SelectLabel>
-                <SelectItem value="Next JS">Next JS</SelectItem>
-                <SelectItem value="Data Science">Data Science</SelectItem>
-                <SelectItem value="Frontend Development">
-                  Frontend Development
-                </SelectItem>
-                <SelectItem value="Fullstack Development">
-                  Fullstack Development
-                </SelectItem>
-                <SelectItem value="MERN Stack Development">
-                  MERN Stack Development
-                </SelectItem>
-                <SelectItem value="Javascript">Javascript</SelectItem>
-                <SelectItem value="Python">Python</SelectItem>
-                <SelectItem value="Docker">Docker</SelectItem>
-                <SelectItem value="MongoDB">MongoDB</SelectItem>
-                <SelectItem value="HTML">HTML</SelectItem>
+                {categories.map((category) => (
+                  <SelectItem key={category.id} value={category.id}>
+                    {category.label}
+                  </SelectItem>
+                ))}
               </SelectGroup>
             </SelectContent>
           </Select>

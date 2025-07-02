@@ -36,6 +36,20 @@ const CourseTab = () => {
   const [publishCourse, {}] = usePublishCourseMutation();
   const [previewThumbnail, setPreviewThumbnail] = useState("");
 
+  const categories = [
+    { id: "nextjs", label: "Next JS" },
+    { id: "data science", label: "Data Science" },
+    { id: "frontend development", label: "Frontend Development" },
+    { id: "fullstack development", label: "Fullstack Development" },
+    { id: "mern stack development", label: "MERN Stack Development" },
+    { id: "backend development", label: "Backend Development" },
+    { id: "javascript", label: "Javascript" },
+    { id: "python", label: "Python" },
+    { id: "docker", label: "Docker" },
+    { id: "mongodb", label: "MongoDB" },
+    { id: "html", label: "HTML" },
+  ];
+
   const [input, setInput] = useState({
     courseTitle: "",
     subTitle: "",
@@ -67,7 +81,8 @@ const CourseTab = () => {
     }
   }, [courseByIdData]);
 
-  const [editCourse, { data, isLoading, isSuccess, error }] = useEditCourseMutation();
+  const [editCourse, { data, isLoading, isSuccess, error }] =
+    useEditCourseMutation();
 
   const changeEventHandler = (e) => {
     const { name, value } = e.target;
@@ -134,14 +149,13 @@ const CourseTab = () => {
     try {
       const data = await removeCourse(courseId);
       console.log(data);
-      
+
       toast.message(data.message);
     } catch (error) {
-      console.log(error);      
+      console.log(error);
     }
     // navigate(`${/admin/course}`);
-    
-  }
+  };
 
   return (
     <Card>
@@ -164,9 +178,7 @@ const CourseTab = () => {
           >
             {courseByIdData?.course.isPublished ? "Unpublished" : "Publish"}
           </Button>
-          <Button
-            onClick={ ()=> removeCourseHandler()}
-          >Remove Course</Button>
+          <Button onClick={() => removeCourseHandler()}>Remove Course</Button>
         </div>
       </CardHeader>
       <CardContent>
@@ -208,22 +220,11 @@ const CourseTab = () => {
                 <SelectContent>
                   <SelectGroup>
                     <SelectLabel>Category</SelectLabel>
-                    <SelectItem value="Next JS">Next JS</SelectItem>
-                    <SelectItem value="Data Science">Data Science</SelectItem>
-                    <SelectItem value="Frontend Development">
-                      Frontend Development
-                    </SelectItem>
-                    <SelectItem value="Fullstack Development">
-                      Fullstack Development
-                    </SelectItem>
-                    <SelectItem value="MERN Stack Development">
-                      MERN Stack Development
-                    </SelectItem>
-                    <SelectItem value="Javascript">Javascript</SelectItem>
-                    <SelectItem value="Python">Python</SelectItem>
-                    <SelectItem value="Docker">Docker</SelectItem>
-                    <SelectItem value="MongoDB">MongoDB</SelectItem>
-                    <SelectItem value="HTML">HTML</SelectItem>
+                    {categories.map((category) => (
+                      <SelectItem key={category.id} value={category.id}>
+                        {category.label}
+                      </SelectItem>
+                    ))}
                   </SelectGroup>
                 </SelectContent>
               </Select>
