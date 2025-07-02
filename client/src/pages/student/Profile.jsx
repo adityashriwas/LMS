@@ -101,14 +101,14 @@ const Profile = () => {
               </span>
             </h1>
           </div>
-          <div className="mb-2">
+          {/* <div className="mb-2">
             <h1 className="font-semibold text-gray-900 dark:text-gray-100 ">
               Role:
               <span className="font-normal text-gray-700 dark:text-gray-300 ml-2">
                 {user.role.toUpperCase()}
               </span>
             </h1>
-          </div>
+          </div> */}
           <Dialog>
             <DialogTrigger asChild>
               <Button size="sm" className="mt-2">
