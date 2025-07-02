@@ -66,7 +66,7 @@ const LectureTab = () => {
         });
 
         if (res.data.success) {
-          console.log(res);
+          // console.log(res);
           setUploadVideoInfo({
             videoUrl: res.data.data.url,
             publicId: res.data.data.public_id,
@@ -84,7 +84,7 @@ const LectureTab = () => {
   };
 
   const editLectureHandler = async () => {
-    console.log({ lectureTitle, uploadVideInfo, isFree, courseId, lectureId });
+    // console.log({ lectureTitle, uploadVideInfo, isFree, courseId, lectureId });
 
     await edtiLecture({
       lectureTitle,

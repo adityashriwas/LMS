@@ -148,7 +148,7 @@ const CourseTab = () => {
   const removeCourseHandler = async () => {
     try {
       const data = await removeCourse(courseId);
-      console.log(data);
+      // console.log(data);
 
       toast.message(data.message);
     } catch (error) {

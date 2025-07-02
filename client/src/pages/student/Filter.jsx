@@ -37,7 +37,7 @@ const Filter = ({ handleFilterChange }) => {
         : [...prevCategories, categoryId];
 
       handleFilterChange(newCategories, sortByPrice);
-      console.log(newCategories);
+      // console.log(newCategories);
       return newCategories;
     });
   };
